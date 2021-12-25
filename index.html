@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            height: 100vh;
+            width: 100vw;
+            background-color: cadetblue;
+            background: linear-gradient(15deg, #848482 30%, #b0c4de 70%);
+            display: grid;
+            place-items: center;
+        }
+        .box{
+            height: 320px;
+            width: 320px;
+            background-color: #141f23;
+            position: relative;
+            border-bottom: 10px solid #141f23;
+            box-shadow: 0 0 0.75vmin 0.75vmin #1115;
+        }
+        .face{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 180px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            background-color: #da8e74;
+            border-radius: 100px 100px 15px 15px;
+        }
+        .ear{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 250px;
+            height: 100px;
+            transform: translate(-50%, -75%); 
+            background-color: #777777;
+            border-radius: 75px;
+        }
+        .ear::before{
+            content: "";
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            width: 230px;
+            height: 50px;
+            transform: translateX(-50%);
+            background-color: #da8e74;
+            border-radius: 75px;
+        
+        }
+        .brow{
+            width: 65px;
+            height: 20px;
+            background-color: #4b4b4b;
+            border-radius: 25px;
+        }
+        .browl{
+            position: absolute;
+            top: 55px;
+            left: 35%;
+            transform: translateX(-70%);
+        }
+        .browr{
+            position: absolute;
+            top: 55px;
+            right: 35%;
+            transform: translate(70%, 80%);
+        }
+        .browl::before{
+            content: "";
+            position: absolute;
+            top: -35px;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            transform: translateX(0%);
+            background-color: #c5755a;
+            border-radius: 50%;
+            box-shadow:  25px -15px 0 -5px #c5755a;
+        }
+        .eye{ 
+            width: 45px;
+            height: 35px;
+            border-radius: 0 0 75px 75px;
+            background-color: #ffffff;
+        }
+        .eyel{
+            position: absolute;
+            top: 100px;
+            left: 37%;
+            transform: translateX(-70%);
+        }
+        .eyer{
+            position: absolute;
+            height: 45px;
+            top: 90px;
+            right: 37%;
+            transform: translateX(70%);
+        }
+        .eyel::before{
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            width: 25px;
+            height: 25px;
+            transform: translateX(-47%);
+            background-color: #363636;
+            border-radius: 0 0 75px 75px;
+        }
+        .eyer::before{
+            content: "";
+            position: absolute;
+            top: 0px;
+            left: 50%;
+            width: 25px;
+            height: 30px;
+            transform: translateX(-60%);
+            background-color: #363636;
+            border-radius: 0 0 75px 75px;
+        }
+        .nose{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, 15%);
+            height: 37px;
+            width: 37px;
+            border-radius: 50%;
+            z-index: 10;
+            background-color: #da8e74;
+            /* background-color: aqua; */
+        }
+        .mous{
+            height: 70px;
+            width: 40px;
+            border-radius: 50px;
+            background-color: #4b4b4b;
+        }
+        .mousl{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-100%, 15%) rotate(60deg);
+        }
+        .mousr{
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            transform: translate(100%, 15%) rotate(-60deg);
+        }
+        .tbox{
+            position: absolute;
+            top: 50%;
+            left: -5px;
+            transform: translate(-0%, -50%) scaleY(1.2) rotate(-15deg);
+            /* display: grid;
+            place-items: center; */
+            z-index: 5;
+            background-color: aqua;
+        }
+        .triangle{
+            position: absolute;
+            background-color: #c5755a;
+            text-align: left;
+            width: 20px;
+            height:20px;
+            border-top-right-radius: 70%;
+            transform: rotate(-60deg) skewX(-30deg) scale(1, .866);
+        }
+        .triangle::before{
+            content: "";
+            position: absolute;
+            background-color: #c5755a;
+            width: 20px;
+            height: 20px;
+            border-top-right-radius: 70%;
+            transform: rotate(-135deg) skewX(-45deg) scale(1.414, .707) translate(0,-50%);
+        }
+        .triangle::after{
+            content: "";
+            position: absolute;
+            background-color: #c5755a;
+            width: 20px;
+            height: 20px;
+            border-top-right-radius: 70%;
+            transform: rotate(135deg) skewY(-45deg) scale(.707, 1.414) translate(50%);
+        }
+        .tibox{
+            position: absolute;
+            top: 2.5px;
+            left: -2px;
+            transform: scale(0.8, 0.7);
+        }
+        .tibox .triangle, .tibox .triangle::before, .tibox .triangle::after{
+            background-color: #da8e74;
+        }
+        .trbox{
+            position: absolute;
+            top: 60%;
+            right: -5px;
+            transform: translate(-0%, -50%) scaleY(1.2) rotate(135deg);
+            /* display: grid;
+            place-items: center; */
+            z-index: 5;
+            background-color: aqua;
+        }
+        
+    </style>
+    <main>
+        <div class="box">
+            <div class="ear"></div>
+            <div class="face">
+                <div class="dot"></div>
+                <div class="brow browl"></div>
+                <div class="brow browr"></div>
+                <div class="eye eyel"></div>
+                <div class="eye eyer"></div>
+                <div class="nose"></div>
+                <div class="mous mousl"></div>
+                <div class="mous mousr"></div>
+                <div class="tbox">    
+                    <div class="triangle tro"></div>
+                    <div class="tibox">
+                        <div class="triangle tri"></div>
+                    </div>
+                </div>
+                <div class="trbox">    
+                    <div class="triangle tro"></div>
+                    <div class="tibox">
+                        <div class="triangle tri"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
